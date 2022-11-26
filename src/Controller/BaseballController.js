@@ -26,17 +26,17 @@ class BaseBallController {
 
   sendPlayerCommand = (input) => {
     this.#player.storeNumber(input.split('').map(Number));
-    this.compare();
+    this.playBall();
   };
 
-  compare = () => {
+  playBall = () => {
     const computer = this.#computer.getNumber();
     const player = this.#player.getNumber();
     this.#player.storeBallCounts(getBallCounts(computer, player));
-    this.print();
+    this.printBallCount();
   };
 
-  print = () => {
+  printBallCount = () => {
     printStatus(this.#player.getBallCounts());
     this.gameOption();
   };
