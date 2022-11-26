@@ -5,7 +5,6 @@ class Player {
 
   storeNumber(numbers) {
     this.#numbers = numbers;
-    console.log(this.#numbers);
   }
 
   storeBallCounts(ballCounts) {
