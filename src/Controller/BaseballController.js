@@ -5,6 +5,11 @@ const getBallCounts = require('../Util/getBallCounts');
 const Computer = require('../Model/Computer');
 const Player = require('../Model/Player');
 
+const TYPE = {
+  restart: '1',
+  quit: '2',
+};
+
 class BaseBallController {
   #computer;
 
@@ -55,8 +60,8 @@ class BaseBallController {
   };
 
   retry = (input) => {
-    if (input === '1') this.start();
-    if (input === '2') exit();
+    if (input === TYPE.restart) this.start();
+    if (input === TYPE.quit) exit();
   };
 }
 
