@@ -1,5 +1,6 @@
 const InputView = require('./InputView');
 const OutputView = require('./outputView');
+const { INPUT_MESSAGE } = require('../Constants/Message');
 
 class View {
   #input;
@@ -12,11 +13,11 @@ class View {
   }
 
   readGameNumbers(callback) {
-    this.#input.readLine('숫자를 입력해주세요', callback);
+    this.#input.readLine(`${INPUT_MESSAGE.game_number}`, callback);
   }
 
   readGameCommand(callback) {
-    this.#input.readLine('게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.', callback);
+    this.#input.readLine(`${INPUT_MESSAGE.game_command}`, callback);
   }
 
   printError(error) {

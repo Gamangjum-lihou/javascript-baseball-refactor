@@ -1,8 +1,10 @@
+const { ERROR_MESSAGE } = require('../Constants/Message');
+
 class ReadError extends Error {
   constructor(message, cause) {
     super(message);
     this.cause = cause.message;
-    this.name = '[ERROR]';
+    this.name = `${ERROR_MESSAGE.error}`;
   }
 }
 

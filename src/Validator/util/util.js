@@ -1,8 +1,9 @@
 const ValidationError = require('../../Error/ValidationError');
+const { ERROR_MESSAGE } = require('../../Constants/Message');
 
 function checkNumber(input) {
   if (/\D/.test(input)) {
-    throw new ValidationError('숫자이외의 다른 문자가 존재합니다.');
+    throw new ValidationError(ERROR_MESSAGE.only_number);
   }
 }
 

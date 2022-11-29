@@ -1,5 +1,6 @@
 const ValidationError = require('../Error/ValidationError');
 const checkNumber = require('./util/util');
+const { ERROR_MESSAGE } = require('../Constants/Message');
 
 class GameCommand {
   #input;
@@ -16,7 +17,7 @@ class GameCommand {
 
   #checkLength() {
     if (this.#input.length !== 1) {
-      throw new ValidationError('1자리수가 아닙니다.');
+      throw new ValidationError(ERROR_MESSAGE.length_one);
     }
   }
 }

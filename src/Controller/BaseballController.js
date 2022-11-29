@@ -1,7 +1,8 @@
 const ReadError = require('../Error/ReadError');
 const ValidationError = require('../Error/ValidationError');
 const Validator = require('../Validator');
-const { printHint } = require('../view/outputView');
+
+const RESTART = '1';
 
 class BaseballController {
   #view;
@@ -67,7 +68,7 @@ class BaseballController {
   }
 
   #restartOrFinish(number) {
-    if (number === '1') return this.#setGame();
+    if (number === RESTART) return this.#setGame();
     return this.#view.finishGame();
   }
 

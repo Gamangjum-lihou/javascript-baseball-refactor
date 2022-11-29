@@ -1,27 +1,28 @@
 const { Console } = require('@woowacourse/mission-utils');
+const { OUTPUT_MESSAGE } = require('../Constants/Message');
 
 const OutputView = {
   printStart() {
-    Console.print('숫자 야구 게임을 시작합니다.');
+    Console.print(OUTPUT_MESSAGE.start);
   },
 
   printHint({ ball, strike }) {
-    if (!ball && !strike) return Console.print(`낫싱`);
-    if (ball && strike) return Console.print(`${ball}볼 ${strike}스트라이크`);
-    if (strike) return Console.print(`${strike}스트라이크`);
-    Console.print(`${ball}볼`);
+    if (!ball && !strike) return Console.print(OUTPUT_MESSAGE.noting);
+    if (ball && strike) return Console.print(OUTPUT_MESSAGE.ball_and_strike(ball, strike));
+    if (strike) return Console.print(OUTPUT_MESSAGE.strike(strike));
+    Console.print(OUTPUT_MESSAGE.ball(ball));
   },
 
   printError({ name, message, cause }) {
-    Console.print(`${name} : ${message}\n[CAUSE] : ${cause}`);
+    Console.print(OUTPUT_MESSAGE.error(name, message, cause));
   },
 
   printSuccess() {
-    Console.print('3개의 숫자를 모두 맞히셨습니다! 게임 종료');
+    Console.print(OUTPUT_MESSAGE.success);
   },
 
   printGameEnd() {
-    Console.print('잘못된 값을 입력하여 게임이 종료됩니다.');
+    Console.print(OUTPUT_MESSAGE.end);
     Console.close();
   },
 

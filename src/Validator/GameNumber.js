@@ -1,5 +1,6 @@
 const ValidationError = require('../Error/ValidationError');
 const checkNumber = require('./util/util');
+const { ERROR_MESSAGE } = require('../Constants/Message');
 
 class GameNumber {
   #input;
@@ -16,7 +17,7 @@ class GameNumber {
 
   #checkLength() {
     if (this.#input.length !== 3) {
-      throw new ValidationError('3자리수가 아닙니다.');
+      throw new ValidationError(ERROR_MESSAGE.length_three);
     }
   }
 }
