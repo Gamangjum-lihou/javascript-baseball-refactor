@@ -1,12 +1,14 @@
 const GameController = require('./GameController');
+const Computer = require('./domain/Computer');
 
 class App {
   constructor() {
-    this.controller = new GameController();
+    this.computer = new Computer();
   }
 
   play() {
-    this.controller.start();
+    const controller = new GameController(this.computer);
+    controller.start();
   }
 }
 
