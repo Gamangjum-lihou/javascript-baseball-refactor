@@ -75,3 +75,42 @@ describe('유저 숫자 농구게임 입력값 유효성 검사', () => {
     }).toThrow();
   });
 });
+
+describe('다시시작/종료 입력값 유효성 검사', () => {
+  test('정해진 값을 입력하지 않을 경우 예외를 발생시킨다. (1)', () => {
+    const randoms = [1, 3, 5];
+    const answers = ['135', 'Q'];
+
+    mockRandoms(randoms);
+    mockQuestions(answers);
+
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow();
+  });
+  test('정해진 값을 입력하지 않을 경우 예외를 발생시킨다. (2)', () => {
+    const randoms = [1, 3, 5];
+    const answers = ['135', 'R'];
+
+    mockRandoms(randoms);
+    mockQuestions(answers);
+
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow();
+  });
+  test('정해진 값을 입력하지 않을 경우 예외를 발생시킨다. (3)', () => {
+    const randoms = [1, 3, 5];
+    const answers = ['135', '3'];
+
+    mockRandoms(randoms);
+    mockQuestions(answers);
+
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow();
+  });
+});
