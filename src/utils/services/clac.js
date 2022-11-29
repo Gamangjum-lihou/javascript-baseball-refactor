@@ -13,16 +13,17 @@ const clac = {
     return randomNum;
   },
   calcResult(user, computer) {
+    const computerArr = [...computer];
     const score = { ball: 0, strike: 0 };
     user.forEach((number, index) => {
-      const isStrike = clac.calcStrike(user, computer, index);
+      const isStrike = clac.calcStrike(user, computerArr, index);
       score.strike += isStrike;
       score.ball += clac.calcBall(number, computer, isStrike);
     });
     return score;
   },
   calcStrike(user, computer, index) {
-    return user[index] === [...computer][index] ? 1 : 0;
+    return user[index] === computer[index] ? 1 : 0;
   },
   calcBall(number, computer, isStrike) {
     return !isStrike && computer.has(number) ? 1 : 0;
