@@ -31,6 +31,16 @@ class BaseballController {
     } catch (error) {
       return this.#handleError(error);
     }
+    return this.#setGame(numbers);
+  }
+
+  #setGame(numbers) {
+    this.#model.setGame();
+    return this.#printHint(numbers);
+  }
+
+  #printHint(numbers) {
+    this.#view.printHint(this.#model.compareUserWithComputerNumbers(numbers));
   }
 
   #handleError(error) {
