@@ -12,6 +12,12 @@ const clac = {
 
     return randomNum;
   },
+  /**
+   *
+   * @param {Array} user
+   * @param {Set} computer
+   * @returns
+   */
   calcResult(user, computer) {
     const computerArr = [...computer];
     const score = { ball: 0, strike: 0 };
@@ -22,9 +28,23 @@ const clac = {
     });
     return score;
   },
+  /**
+   *
+   * @param {Array} user
+   * @param {Array} computer
+   * @param {number} index
+   * @returns
+   */
   calcStrike(user, computer, index) {
     return user[index] === computer[index] ? 1 : 0;
   },
+  /**
+   *
+   * @param {number} number
+   * @param {set} computer
+   * @param {number} isStrike
+   * @returns
+   */
   calcBall(number, computer, isStrike) {
     return !isStrike && computer.has(number) ? 1 : 0;
   },
