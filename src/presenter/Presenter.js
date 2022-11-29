@@ -22,6 +22,7 @@ class Presenter {
   }
 
   retry() {
+    IoView.printFinish();
     IoView.readRetry((input) => (input === '1' ? this.run() : IoView.printEnd()));
   }
 }
