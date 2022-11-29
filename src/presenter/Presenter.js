@@ -1,6 +1,8 @@
-const IoView = require('../view/IoView');
 const { checkNumber, checkLength, checkDuplicate, checkOneOrTwo } = require('../InputValidation');
+const IoView = require('../view/IoView');
 const BaseBallGame = require('../model/BaseBallGame');
+const { END_COUNT } = require('../constants/BaseBall');
+const { STRING_ONE } = require('../constants/Number');
 
 class Presenter {
   #baseBallGame;
@@ -19,7 +21,7 @@ class Presenter {
       Presenter.#checkValidation(input);
       const ballCount = this.#baseBallGame.makeBallCountFormat(input);
       IoView.printCount(ballCount);
-      return ballCount === '3스트라이크' ? this.retry() : this.match();
+      return ballCount === END_COUNT ? this.retry() : this.match();
     });
   }
 
@@ -33,7 +35,7 @@ class Presenter {
     IoView.printFinish();
     IoView.readRetry((input) => {
       checkOneOrTwo(input);
-      return input === '1' ? this.run() : IoView.printEnd();
+      return input === STRING_ONE ? this.run() : IoView.printEnd();
     });
   }
 }

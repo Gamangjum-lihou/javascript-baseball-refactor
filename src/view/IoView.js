@@ -1,20 +1,21 @@
 const { Console } = require('@woowacourse/mission-utils');
+const { INPUT_MESSAGE, OUTPUT_MESSAGE } = require('../constants/Message');
 
 const IoView = {
   readNumber(callback) {
-    Console.readLine('숫자를 입력해주세요 : ', callback);
+    Console.readLine(INPUT_MESSAGE.number, callback);
   },
   readRetry(callback) {
-    Console.readLine('게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.', callback);
+    Console.readLine(INPUT_MESSAGE.retry, callback);
   },
   printStart() {
-    Console.print('숫자 야구 게임을 시작합니다.');
+    Console.print(OUTPUT_MESSAGE.start);
   },
   printCount(ballCount) {
     Console.print(ballCount);
   },
   printFinish() {
-    Console.print('3개의 숫자를 모두 맞히셨습니다! 게임 종료');
+    Console.print(OUTPUT_MESSAGE.finish);
   },
   printEnd() {
     Console.close();

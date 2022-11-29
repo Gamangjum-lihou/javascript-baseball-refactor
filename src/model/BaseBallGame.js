@@ -1,3 +1,5 @@
+const { BASEBALL } = require('../constants/BaseBall');
+const { NUMBER, ZERO } = require('../constants/Number');
 const BallCount = require('./utils/BallCount');
 const { makeRandomNumbers } = require('./utils/BaseBallNumberMaker');
 
@@ -5,21 +7,21 @@ class BaseBallGame {
   #answer;
 
   constructor() {
-    this.#answer = makeRandomNumbers(3);
+    this.#answer = makeRandomNumbers(NUMBER.baseball_length);
   }
 
   makeBallCountFormat(input) {
     const { ball, strike } = new BallCount(input, this.#answer).getCount();
     const format = BaseBallGame.#makeBallFormat(ball) + BaseBallGame.#makeStrikeFormat(strike);
-    return format === '' ? '낫싱' : format;
+    return format === '' ? BASEBALL.nothing : format;
   }
 
   static #makeBallFormat(ball) {
-    return ball !== 0 ? `${ball}볼 ` : '';
+    return ball !== ZERO ? `${ball}${BASEBALL.ball} ` : '';
   }
 
   static #makeStrikeFormat(strike) {
-    return strike !== 0 ? `${strike}스트라이크` : '';
+    return strike !== ZERO ? `${strike}${BASEBALL.strike}` : '';
   }
 }
 
