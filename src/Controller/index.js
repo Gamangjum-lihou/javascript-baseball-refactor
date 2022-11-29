@@ -1,5 +1,4 @@
 const { GAME_COMMAND } = require('../utils/constants/system');
-const { calcResult } = require('../utils/services/clac');
 const { userNumberValidation, userAgainOrQuitValidation } = require('../utils/services/validation');
 
 class Controller {
