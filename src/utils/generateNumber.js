@@ -9,14 +9,14 @@ const RANDOM_NUMBER = Object.freeze({
 const generateNumber = {
   getNumber() {
     const { START, END, COUNTS } = RANDOM_NUMBER;
-    const set = new Set();
+    const numbers = new Set();
 
-    while (set.size < COUNTS) {
+    while (numbers.size < COUNTS) {
       const newNumber = Random.pickNumberInRange(START, END);
-      set.add(newNumber);
+      numbers.add(newNumber);
     }
 
-    return [...set];
+    return numbers;
   },
 };
 
