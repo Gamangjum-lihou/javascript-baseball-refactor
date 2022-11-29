@@ -33,9 +33,9 @@ class BaseballController {
     }
   }
 
-  #handleError(error, callback) {
+  #handleError(error) {
     if (error instanceof ValidationError) {
-      this.#view.printError(new ReadError('Validation Error', error));
+      return this.#view.printError(new ReadError('Validation Error', error));
     }
     throw error;
   }

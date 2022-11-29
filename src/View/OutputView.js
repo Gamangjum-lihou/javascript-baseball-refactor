@@ -14,7 +14,6 @@ const OutputView = {
 
   printError({ name, message, cause }) {
     Console.print(`${name} : ${message}\n[CAUSE] : ${cause}`);
-    Console.close();
   },
 
   printSuccess() {
@@ -22,7 +21,8 @@ const OutputView = {
   },
 
   printGameEnd() {
-    Console.print();
+    Console.print('잘못된 값을 입력하여 게임이 종료됩니다.');
+    Console.close();
   },
 };
 

@@ -17,6 +17,7 @@ class View {
 
   printError(error) {
     this.#output.printError(error);
+    this.#output.printGameEnd();
   }
 
   pinrtStart() {
