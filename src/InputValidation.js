@@ -16,6 +16,11 @@ const InputValidation = {
       throw new Error('중복된 값이 있습니다.');
     }
   },
+  checkOneOrTwo(input) {
+    if (!(input === '1' || input === '2')) {
+      throw new Error('입력값으로 1과 2만 올 수 있습니다.');
+    }
+  },
 };
 
 module.exports = InputValidation;

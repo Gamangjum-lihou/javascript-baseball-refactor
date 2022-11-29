@@ -1,5 +1,5 @@
 const IoView = require('../view/IoView');
-const { checkNumber, checkLength, checkDuplicate } = require('../InputValidation');
+const { checkNumber, checkLength, checkDuplicate, checkOneOrTwo } = require('../InputValidation');
 const BaseBallGame = require('../model/BaseBallGame');
 
 class Presenter {
@@ -31,7 +31,10 @@ class Presenter {
 
   retry() {
     IoView.printFinish();
-    IoView.readRetry((input) => (input === '1' ? this.run() : IoView.printEnd()));
+    IoView.readRetry((input) => {
+      checkOneOrTwo(input);
+      return input === '1' ? this.run() : IoView.printEnd();
+    });
   }
 }
 
