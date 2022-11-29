@@ -1,4 +1,5 @@
 const IoView = require('../view/IoView');
+const { checkNumber, checkLength, checkDuplicate } = require('../InputValidation');
 const BaseBallGame = require('../model/BaseBallGame');
 
 class Presenter {
@@ -15,10 +16,17 @@ class Presenter {
 
   match() {
     IoView.readNumber((input) => {
+      Presenter.#checkValidation(input);
       const ballCount = this.#baseBallGame.makeBallCountFormat(input);
       IoView.printCount(ballCount);
       return ballCount === '3스트라이크' ? this.retry() : this.match();
     });
+  }
+
+  static #checkValidation(input) {
+    checkNumber(input);
+    checkLength(input);
+    checkDuplicate(input);
   }
 
   retry() {
