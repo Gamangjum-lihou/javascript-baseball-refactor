@@ -2,19 +2,18 @@ const { input } = require('./view/InputView');
 const { print } = require('./view/OutputView');
 
 const Messages = require('./utils/Messages');
-
-const handleError = (occuredError) => {
-  try {
-    throw new Error(occuredError);
-  } catch (occuredError) {
-    printErrorLog(occuredError);
-    return false;
-  }
-};
+const Computer = require('./domain/Computer');
 
 class GameController {
+  #computer;
+
+  constructor() {
+    this.#computer = new Computer();
+  }
+
   start() {
     print(Messages.GAME_START);
+    this.#computer.generateNumber();
     this.#getNumber();
   }
 
