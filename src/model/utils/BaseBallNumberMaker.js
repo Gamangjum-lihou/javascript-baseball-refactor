@@ -1,4 +1,5 @@
 const { Random } = require('@woowacourse/mission-utils');
+const { BLANK } = require('../../constants/BaseBall');
 const { NUMBER } = require('../../constants/Number');
 
 const BaseBallNumberMaker = {
@@ -7,7 +8,7 @@ const BaseBallNumberMaker = {
     while (RandomNumberSet.size < length) {
       RandomNumberSet.add(Random.pickNumberInRange(NUMBER.min, NUMBER.max));
     }
-    return [...RandomNumberSet].join('');
+    return [...RandomNumberSet].join(BLANK);
   },
 };
 

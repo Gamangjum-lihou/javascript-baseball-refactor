@@ -1,5 +1,7 @@
+const { ONE, ZERO } = require('../../constants/Number');
+
 class BallCount {
-  #count = { strike: 0, ball: 0 };
+  #count = { strike: ZERO, ball: ZERO };
 
   constructor(inputNumbers, answer) {
     this.#countMatch(inputNumbers, answer);
@@ -14,13 +16,13 @@ class BallCount {
 
   #checkStrike(number, answer, index) {
     if (number === answer[index]) {
-      this.#count.strike += 1;
+      this.#count.strike += ONE;
     }
   }
 
   #checkBall(number, answer, index) {
     if (answer.includes(number) && number !== answer[index]) {
-      this.#count.ball += 1;
+      this.#count.ball += ONE;
     }
   }
 

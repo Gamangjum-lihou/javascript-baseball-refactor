@@ -5,7 +5,8 @@ const NUMBER = Object.freeze({
 });
 
 const ZERO = 0;
+const ONE = 1;
 const STRING_ONE = '1';
 const STRING_TWO = '2';
 
-module.exports = { NUMBER, ZERO, STRING_ONE, STRING_TWO };
+module.exports = { NUMBER, ZERO, ONE, STRING_ONE, STRING_TWO };
