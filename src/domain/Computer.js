@@ -5,7 +5,6 @@ class Computer {
 
   generateNumber() {
     this.#numbers = getNumber();
-    console.log(this.#numbers);
   }
 
   getScore(input) {
@@ -16,8 +15,6 @@ class Computer {
       if (this.#isStrike(num, computer, index)) score.strike += 1;
       if (this.#isBall(num, computer, index)) score.ball += 1;
     });
-
-    console.log(score.strike);
 
     return score;
   }
