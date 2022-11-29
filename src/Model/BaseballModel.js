@@ -5,10 +5,10 @@ class BaseballModel {
 
   #score;
   setGame() {
-    this.saveComputerNumbers();
-    this.#score = { ball: 0, strike: 0 };
+    this.#saveComputerNumbers();
+    this.resetStatus();
   }
-  saveComputerNumbers() {
+  #saveComputerNumbers() {
     this.#computerNumbers = RandomNumberGenerator.generateRandomNumber();
   }
   compareUserWithComputerNumbers(input) {
@@ -20,6 +20,14 @@ class BaseballModel {
       if (!isStrike && isBall) this.#score.ball += 1;
     });
     return this.#score;
+  }
+
+  resetStatus() {
+    this.#score = { ball: 0, strike: 0 };
+  }
+
+  isThreeStrikes() {
+    return this.#score.strike === 3;
   }
 }
 

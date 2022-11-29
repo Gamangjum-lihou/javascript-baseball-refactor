@@ -18,7 +18,12 @@ class BaseballController {
 
   start() {
     this.#view.pinrtStart();
-    this.#inputNumbers();
+    this.#setGame();
+  }
+
+  #setGame() {
+    this.#model.setGame();
+    return this.#inputNumbers();
   }
 
   #inputNumbers() {
@@ -31,16 +36,18 @@ class BaseballController {
     } catch (error) {
       return this.#handleError(error);
     }
-    return this.#setGame(numbers);
-  }
-
-  #setGame(numbers) {
-    this.#model.setGame();
     return this.#printHint(numbers);
   }
 
   #printHint(numbers) {
     this.#view.printHint(this.#model.compareUserWithComputerNumbers(numbers));
+    return this.#threeStrikesOrNot();
+  }
+
+  #threeStrikesOrNot() {
+    if (this.#model.isThreeStrikes()) return;
+    this.#model.resetStatus();
+    return this.#inputNumbers();
   }
 
   #handleError(error) {
