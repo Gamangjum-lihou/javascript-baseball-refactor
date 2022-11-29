@@ -1,6 +1,10 @@
 // const { error } = require('./Error');
 
 const RANDOM_NUMBER_LENGTH = 3;
+const INPUT_COMMAND = Object.freeze({
+  RESTART: 1,
+  END: 2,
+});
 
 const Validator = {
   isFitLength(input) {
@@ -14,15 +18,9 @@ const Validator = {
     return isNumber;
   },
 
-  // #isValidGameEndInput() {
-  //   return this.input === EXECPTION_CONDITION.RESTART || this.input === EXECPTION_CONDITION.END;
-  // }
-
-  // isResetOrAndInput(input) {
-  //   this.input = input;
-
-  //   if (this.#isValidGameEndInput() === false) return this.#throwTypeError();
-  // }
+  isValidCommand(input) {
+    return input === INPUT_COMMAND.RESTART || input === INPUT_COMMAND.END;
+  },
 };
 
 module.exports = Validator;
