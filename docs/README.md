@@ -1,6 +1,31 @@
-## 기능 목록
+## 📗 디렉토리 구조
 
-5:21
+📦src
+┣ 📂Constants
+┃ ┣ 📜Message.js
+┃ ┗ 📜System.js
+┣ 📂Controller
+┃ ┗ 📜BaseballController.js
+┣ 📂Error
+┃ ┣ 📜DefaultError.js
+┃ ┣ 📜ReadError.js
+┃ ┗ 📜ValidationError.js
+┣ 📂Model
+┃ ┗ 📜BaseballModel.js
+┣ 📂Validator
+┃ ┣ 📂util
+┃ ┃ ┗ 📜util.js
+┃ ┣ 📜GameCommand.js
+┃ ┣ 📜GameNumber.js
+┃ ┗ 📜index.js
+┣ 📂View
+┃ ┣ 📜InputView.js
+┃ ┣ 📜OutputView.js
+┃ ┗ 📜index.js
+┣ 📜App.js
+┗ 📜RandomNumberGenerator.js
+
+## 📕 기능 목록
 
 1. 숫자 야구 게임 시작 멘트 출력
 2. 컴퓨터에서 1~9사이의 서로다른 수 3개를 뽑은뒤 저장해 놓는다.
