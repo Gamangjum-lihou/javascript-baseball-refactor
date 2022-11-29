@@ -2,12 +2,12 @@ const { NUMBER_RANGE, GAME_COMMAND } = require('../constants/system');
 const CustomError = require('../../Error');
 const { ERROR_MESSAGE } = require('../constants/error');
 
-const isNumber = (numbers) => numbers.some((number) => !Number.isNaN(number));
+const isNumber = (numbers) => numbers.every((number) => !Number.isNaN(number));
 const isCorrectLength = (numbers) => numbers.length === NUMBER_RANGE.size;
 const isOverlap = (numbers) => numbers.length === new Set(numbers).size;
 const isRange = (numbers) => {
   const { min, max } = NUMBER_RANGE;
-  return numbers.some((number) => min <= number && number <= max);
+  return numbers.every((number) => min <= Number(number) && Number(number) <= max);
 };
 const isIncludesObjectValues = (option, input) => Object.values(option).includes(Number(input));
 
