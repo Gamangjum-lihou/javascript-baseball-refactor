@@ -8,6 +8,11 @@ const GAME_NUMBER = Object.freeze({
   MAX: 3,
 });
 
+const INPUT_COMMAND = Object.freeze({
+  RESTART: 1,
+  END: 2,
+});
+
 class GameController {
   #computer;
 
@@ -50,19 +55,25 @@ class GameController {
   }
 
   #checkWin({ _, strike }) {
-    if (strike === GAME_NUMBER.MAX) return this.#restartOrQuit();
-    return this.#getNumber(false);
+    if (strike === GAME_NUMBER.MAX) {
+      View.win();
+      this.#restartOrQuit();
+    }
+    return this.#getNumber();
   }
 
   #restartOrQuit() {
-    View.inputNumber(this.#getCommand.bind(this));
+    View.inputCommand(this.#getCommand.bind(this));
   }
 
-  #getCommand(input) {}
+  #getCommand(input) {
+    this.#validteCommand(input);
+    if (Number(input) === INPUT_COMMAND.RESTART) this.start(false);
+    if (Number(input) === INPUT_COMMAND.END) View.end();
+  }
 
   #validteCommand(input) {
-    if (!Validator.isFitLength(input)) throw new Error();
-    if (!Validator.isNumber(input)) throw new Error();
+    if (!Validator.isValidCommand(input)) throw new Error();
   }
 }
 
