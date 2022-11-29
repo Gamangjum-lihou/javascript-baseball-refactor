@@ -9,6 +9,8 @@ class GameNumber {
     this.#input = input;
     this.#checkNumber();
     this.#checkLength();
+    this.#checkZero();
+    this.#checkDuplication();
   }
 
   #checkNumber() {
@@ -19,6 +21,23 @@ class GameNumber {
     if (this.#input.length !== 3) {
       throw new ValidationError(ERROR_MESSAGE.length_three);
     }
+  }
+
+  #checkZero() {
+    if (/0/.test(this.#input)) {
+      throw new ValidationError(ERROR_MESSAGE.not_zero);
+    }
+  }
+
+  #checkDuplication() {
+    if (this.#isDuplication()) {
+      throw new ValidationError(ERROR_MESSAGE.not_duplication);
+    }
+  }
+
+  #isDuplication() {
+    const check = new Set(this.#input);
+    return this.#input.length !== check.size;
   }
 }
 

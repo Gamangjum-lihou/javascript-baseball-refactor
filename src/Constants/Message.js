@@ -3,6 +3,9 @@ const ERROR_MESSAGE = {
   length_one: '1자릿수가 아닙니다.',
   length_three: '3자릿수가 아닙니다.',
   only_number: '숫자이외의 다른 문자가 존재합니다.',
+  not_zero: '0을 포함시켜면 안됩니다. ',
+  not_duplication: '서로 다른 숫자를 입력하시옵소서',
+  one_or_two: '숫자 1 또는 2만 입력이 가능합니다.',
 };
 
 const INPUT_MESSAGE = {
