@@ -11,8 +11,12 @@ class View {
     this.#output = OutputView;
   }
 
-  readNumbers(callback) {
+  readGameNumbers(callback) {
     this.#input.readLine('숫자를 입력해주세요', callback);
+  }
+
+  readGameCommand(callback) {
+    this.#input.readLine('게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.', callback);
   }
 
   printError(error) {
@@ -26,6 +30,14 @@ class View {
 
   printHint(value) {
     this.#output.printHint(value);
+  }
+
+  printSuccess() {
+    this.#output.printSuccess();
+  }
+
+  finishGame() {
+    this.#output.finishGame();
   }
 }
 

@@ -63,6 +63,12 @@ class BaseballController {
     } catch (error) {
       return this.#handleError(error);
     }
+    return this.#restartOrFinish(number);
+  }
+
+  #restartOrFinish(number) {
+    if (number === '1') return this.#setGame();
+    return this.#view.finishGame();
   }
 
   #handleError(error) {

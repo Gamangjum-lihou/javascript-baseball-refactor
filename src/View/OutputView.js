@@ -17,11 +17,15 @@ const OutputView = {
   },
 
   printSuccess() {
-    Console.print();
+    Console.print('3개의 숫자를 모두 맞히셨습니다! 게임 종료');
   },
 
   printGameEnd() {
     Console.print('잘못된 값을 입력하여 게임이 종료됩니다.');
+    Console.close();
+  },
+
+  finishGame() {
     Console.close();
   },
 };
