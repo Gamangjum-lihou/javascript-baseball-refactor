@@ -24,15 +24,13 @@ class Controller {
 
   userNumberHandler(input) {
     userNumberValidation(input);
-    this.#model.setUserNum([...input]);
+    this.#model.setUserNum(input);
     this.clacResult();
   }
 
   clacResult() {
-    const user = this.#model.getUserNum();
-    const computer = this.#model.getRandomNum();
     this.result();
-    if (user.toString() === [...computer].toString()) return this.win();
+    if (this.#model.isSameNumbers()) return this.win();
     return this.round();
   }
 

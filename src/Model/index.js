@@ -6,7 +6,7 @@ class Model {
   #userNum;
 
   setUserNum(userNum) {
-    this.#userNum = userNum.map(Number);
+    this.#userNum = [...userNum].map(Number);
   }
 
   getUserNum() {
@@ -19,6 +19,10 @@ class Model {
 
   getRandomNum() {
     return this.#randomNum;
+  }
+
+  isSameNumbers() {
+    return this.#userNum.toString() === [...this.#randomNum].toString();
   }
 }
 
