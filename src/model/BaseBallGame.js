@@ -11,7 +11,7 @@ class BaseBallGame {
   makeBallCountFormat(input) {
     const { ball, strike } = new BallCount(input, this.#answer).getCount();
     const format = BaseBallGame.#makeBallFormat(ball) + BaseBallGame.#makeStrikeFormat(strike);
-    return format === '' ? format : '낫싱';
+    return format === '' ? '낫싱' : format;
   }
 
   static #makeBallFormat(ball) {
