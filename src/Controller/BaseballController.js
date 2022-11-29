@@ -34,7 +34,7 @@ class BaseballController {
     try {
       this.#validator.checkGameNumbers(numbers);
     } catch (error) {
-      return this.#handleError(error);
+      throw this.#handleError(error);
     }
     return this.#printHint(numbers);
   }
