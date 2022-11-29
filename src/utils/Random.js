@@ -7,7 +7,7 @@ const RANDOM_NUMBER = Object.freeze({
 });
 
 const pickNumer = {
-  getNumer() {
+  getNumber() {
     const { START, END, COUNTS } = RANDOM_NUMBER;
     const set = new Set();
 
