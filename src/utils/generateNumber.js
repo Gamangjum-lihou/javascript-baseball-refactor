@@ -6,7 +6,7 @@ const RANDOM_NUMBER = Object.freeze({
   COUNTS: 3,
 });
 
-const pickNumer = {
+const generateNumber = {
   getNumber() {
     const { START, END, COUNTS } = RANDOM_NUMBER;
     const set = new Set();
@@ -20,4 +20,4 @@ const pickNumer = {
   },
 };
 
-module.exports = pickNumer;
+module.exports = generateNumber;
