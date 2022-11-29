@@ -41,6 +41,7 @@ class GameController {
   #validteBaseBall(input) {
     if (!Validator.isFitLength(input)) throw new Error();
     if (!Validator.isNumber(input)) throw new Error();
+    if (Validator.isDuplicate(input)) throw new Error();
   }
 
   #getResult(input) {

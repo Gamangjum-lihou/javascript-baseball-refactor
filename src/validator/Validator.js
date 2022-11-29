@@ -1,5 +1,3 @@
-// const { error } = require('./Error');
-
 const RANDOM_NUMBER_LENGTH = 3;
 const INPUT_COMMAND = Object.freeze({
   RESTART: 1,
@@ -16,6 +14,10 @@ const Validator = {
     const isNumber = regex.test(Number(input));
 
     return isNumber;
+  },
+
+  isDuplicate(input) {
+    return new Set(input).size !== RANDOM_NUMBER_LENGTH;
   },
 
   isValidCommand(input) {
