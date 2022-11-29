@@ -48,9 +48,7 @@ class Controller {
   }
 
   result() {
-    const user = this.#model.getUserNum();
-    const computer = this.#model.getRandomNum();
-    const score = calcResult(user, computer);
+    const score = this.#model.getResult();
     this.#view.printResult(score);
   }
 

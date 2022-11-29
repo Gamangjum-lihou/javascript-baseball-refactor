@@ -1,4 +1,4 @@
-const { createRandom } = require('../utils/services/clac');
+const { createRandom, calcResult } = require('../utils/services/clac');
 
 class Model {
   #randomNum;
@@ -23,6 +23,10 @@ class Model {
 
   isSameNumbers() {
     return this.#userNum.toString() === [...this.#randomNum].toString();
+  }
+
+  getResult() {
+    return calcResult(this.#userNum, this.#randomNum);
   }
 }
 
