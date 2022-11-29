@@ -19,7 +19,7 @@ const Validator = {
   },
 
   isValidCommand(input) {
-    return input === INPUT_COMMAND.RESTART || input === INPUT_COMMAND.END;
+    return Number(input) === INPUT_COMMAND.RESTART || Number(input) === INPUT_COMMAND.END;
   },
 };
 
