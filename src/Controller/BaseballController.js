@@ -23,14 +23,14 @@ class BaseballController {
 
   #setGame() {
     this.#model.setGame();
-    return this.#inputNumbers();
+    return this.#inputGameNumbers();
   }
 
-  #inputNumbers() {
-    this.#view.readNumbers((numbers) => this.#checkInput(numbers));
+  #inputGameNumbers() {
+    this.#view.readGameNumbers((numbers) => this.#checkGameNumbers(numbers));
   }
 
-  #checkInput(numbers) {
+  #checkGameNumbers(numbers) {
     try {
       this.#validator.checkGameNumbers(numbers);
     } catch (error) {
@@ -45,9 +45,24 @@ class BaseballController {
   }
 
   #threeStrikesOrNot() {
-    if (this.#model.isThreeStrikes()) return;
+    if (this.#model.isThreeStrikes()) {
+      this.#view.printSuccess();
+      return this.#inputGameCommand();
+    }
     this.#model.resetStatus();
-    return this.#inputNumbers();
+    return this.#inputGameNumbers();
+  }
+
+  #inputGameCommand() {
+    this.#view.readGameCommand((number) => this.#checkGameCommand(number));
+  }
+
+  #checkGameCommand(number) {
+    try {
+      this.#validator.checkGameCommand(number);
+    } catch (error) {
+      return this.#handleError(error);
+    }
   }
 
   #handleError(error) {
