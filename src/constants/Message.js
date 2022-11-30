@@ -9,7 +9,7 @@ const OUTPUT_MESSAGE = Object.freeze({
 });
 
 const ERROR_MESSAGE = Object.freeze({
-  number: '숫자만 입력 가능합니다.',
+  number: '1~9의 숫자만 입력 가능합니다.',
   length: '길이가 3이 아닙니다.',
   duplicate: '중복된 값이 있습니다.',
   retry: '입력값으로 1과 2만 올 수 있습니다.',

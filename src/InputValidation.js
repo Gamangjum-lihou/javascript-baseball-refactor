@@ -3,7 +3,7 @@ const { STRING_ONE, STRING_TWO } = require('./constants/Number');
 
 const InputValidation = {
   checkNumber(input) {
-    const RegExp = /^[0-9]+$/g;
+    const RegExp = /^[1-9]+$/g;
     if (!RegExp.test(input)) {
       throw new Error(ERROR_MESSAGE.number);
     }
