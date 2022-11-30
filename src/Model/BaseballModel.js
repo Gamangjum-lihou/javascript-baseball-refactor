@@ -12,7 +12,6 @@ class BaseballModel {
     this.#computerNumbers = RandomNumberGenerator.generateRandomNumber();
   }
   compareUserWithComputerNumbers(input) {
-    console.log(this.#computerNumbers);
     input.split('').forEach((cur, index) => {
       const isStrike =
         this.#computerNumbers.includes(Number(cur)) && this.#computerNumbers.indexOf(Number(cur)) === index;
