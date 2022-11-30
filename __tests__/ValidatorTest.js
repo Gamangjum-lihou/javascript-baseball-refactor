@@ -24,7 +24,7 @@ describe('입력값 유효성 검사', () => {
     expect(Validator.isNumber(testString)).toBeTruthy();
   });
 
-  test.each([['11'], [' 2 '], ['2!'], ['   1'], ['-1']])('숫자 야구 입력값 숫자가 아닌지 확인한다.', testString => {
-    expect(Validator.isValidCommand(testString)).toBeTruthy();
+  test.each([['123'], ['345'], ['456']])('숫자 야구 입력값 중 중복된 숫자가 있는지 확인한다.', testString => {
+    expect(Validator.isValidCommand(testString)).toBeFalsy();
   });
 });
