@@ -2,15 +2,15 @@ const { Console } = require('@woowacourse/mission-utils');
 const { input } = require('./InputView');
 const { print } = require('./OutputView');
 
-const Messages = require('../utils/Messages');
+const MESSAGES = require('../utils/MESSAGES');
 
 const View = {
   start() {
-    print(Messages.GAME_START);
+    print(MESSAGES.GAME_START);
   },
 
   inputNumber(callback) {
-    input(Messages.INPUT_NUMBERS, callback);
+    input(MESSAGES.INPUT_NUMBERS, callback);
   },
 
   printResult(message) {
@@ -18,11 +18,11 @@ const View = {
   },
 
   win() {
-    print(Messages.RESULT_SUCCESS);
+    print(MESSAGES.RESULT_SUCCESS);
   },
 
   inputCommand(callback) {
-    input(Messages.INPUT_COMMAND, callback);
+    input(MESSAGES.INPUT_COMMAND, callback);
   },
 
   end() {

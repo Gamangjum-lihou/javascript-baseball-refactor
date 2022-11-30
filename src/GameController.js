@@ -1,7 +1,7 @@
 const Computer = require('./domain/Computer');
 const Validator = require('./validator/Validator');
 const View = require('./view/View');
-const Messages = require('./utils/Messages');
+const MESSAGES = require('./utils/MESSAGES');
 
 const GAME_NUMBER = Object.freeze({
   MIN: 0,
@@ -49,10 +49,10 @@ class GameController {
   }
 
   #getMessage({ ball, strike }) {
-    if (ball === GAME_NUMBER.MIN && strike === GAME_NUMBER.MIN) return Messages.RESULT_NOTHING;
-    if (ball === GAME_NUMBER.MIN || strike === GAME_NUMBER.MAX) return `${Messages.RESULT_STRIKE(strike)}`;
-    if (strike === GAME_NUMBER.MIN) return `${Messages.RESULT_BALL(ball)}`;
-    return `${Messages.RESULT_BALL(ball)} ${Messages.RESULT_STRIKE(strike)}`;
+    if (ball === GAME_NUMBER.MIN && strike === GAME_NUMBER.MIN) return MESSAGES.RESULT_NOTHING;
+    if (ball === GAME_NUMBER.MIN || strike === GAME_NUMBER.MAX) return `${MESSAGES.RESULT_STRIKE(strike)}`;
+    if (strike === GAME_NUMBER.MIN) return `${MESSAGES.RESULT_BALL(ball)}`;
+    return `${MESSAGES.RESULT_BALL(ball)} ${MESSAGES.RESULT_STRIKE(strike)}`;
   }
 
   #checkWin({ _, strike }) {
