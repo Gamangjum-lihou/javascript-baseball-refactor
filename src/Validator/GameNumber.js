@@ -1,44 +1,42 @@
 const ValidationError = require('../Error/ValidationError');
-const checkNumber = require('./util/util');
 const { ERROR_MESSAGE } = require('../Constants/Message');
 
-class GameNumber {
-  #input;
-
+const GameNumber = {
   checkGameNumbers(input) {
-    this.#input = input;
-    this.#checkNumber();
-    this.#checkLength();
-    this.#checkZero();
-    this.#checkDuplication();
-  }
+    this.checkNumber(input);
+    this.checkLength(input);
+    this.checkZero(input);
+    this.checkDuplication(input);
+  },
 
-  #checkNumber() {
-    checkNumber(this.#input);
-  }
+  checkNumber(input) {
+    if (/\D/.test(input)) {
+      throw new ValidationError(ERROR_MESSAGE.only_number);
+    }
+  },
 
-  #checkLength() {
-    if (this.#input.length !== 3) {
+  checkLength(input) {
+    if (input.length !== 3) {
       throw new ValidationError(ERROR_MESSAGE.length_three);
     }
-  }
+  },
 
-  #checkZero() {
-    if (/0/.test(this.#input)) {
+  checkZero(input) {
+    if (/0/.test(input)) {
       throw new ValidationError(ERROR_MESSAGE.not_zero);
     }
-  }
+  },
 
-  #checkDuplication() {
-    if (this.#isDuplication()) {
+  checkDuplication(input) {
+    if (this.isDuplication(input)) {
       throw new ValidationError(ERROR_MESSAGE.not_duplication);
     }
-  }
+  },
 
-  #isDuplication() {
-    const check = new Set(this.#input);
-    return this.#input.length !== check.size;
-  }
-}
+  isDuplication(input) {
+    const check = new Set(input);
+    return input.length !== check.size;
+  },
+};
 
 module.exports = GameNumber;

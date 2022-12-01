@@ -1,32 +1,30 @@
 const ValidationError = require('../Error/ValidationError');
-const checkNumber = require('./util/util');
 const { ERROR_MESSAGE } = require('../Constants/Message');
 
-class GameCommand {
-  #input;
-
+const GameCommand = {
   checkGameCommand(input) {
-    this.#input = input;
-    this.#checkNumber();
-    this.#checkLength();
-    this.#checkOneOrTwo();
-  }
+    this.checkNumber(input);
+    this.checkLength(input);
+    this.checkOneOrTwo(input);
+  },
 
-  #checkNumber() {
-    checkNumber(this.#input);
-  }
+  checkNumber(input) {
+    if (/\D/.test(input)) {
+      throw new ValidationError(ERROR_MESSAGE.only_number);
+    }
+  },
 
-  #checkLength() {
-    if (this.#input.length !== 1) {
+  checkLength(input) {
+    if (input.length !== 1) {
       throw new ValidationError(ERROR_MESSAGE.length_one);
     }
-  }
+  },
 
-  #checkOneOrTwo() {
-    if (!/1|2/.test(this.#input)) {
+  checkOneOrTwo(input) {
+    if (!/1|2/.test(input)) {
       throw new ValidationError(ERROR_MESSAGE.one_or_two);
     }
-  }
-}
+  },
+};
 
 module.exports = GameCommand;

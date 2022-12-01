@@ -14,7 +14,7 @@ class BaseballController {
   constructor(view, model) {
     this.#view = view;
     this.#model = model;
-    this.#validator = new Validator();
+    this.#validator = Validator;
   }
 
   start() {
