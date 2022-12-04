@@ -3,6 +3,8 @@ const ValidationError = require('../Error/ValidationError');
 const Validator = require('../Validator');
 
 const RESTART = '1';
+const GAME_NUMBER = 'checkGameNumbers';
+const GAME_COMMAND = 'checkGameCommand';
 
 class BaseballController {
   #view;
@@ -28,43 +30,28 @@ class BaseballController {
   }
 
   #inputGameNumbers() {
-    this.#view.readGameNumbers((numbers) => this.#checkGameNumbers(numbers));
+    this.#view.readGameNumbers(this.#gameNumbersHandler.bind(this));
   }
 
-  #checkGameNumbers(numbers) {
-    try {
-      this.#validator.checkGameNumbers(numbers);
-    } catch (error) {
-      throw this.#handleError(error);
-    }
-    return this.#printHint(numbers);
+  #gameNumbersHandler(input) {
+    if (this.#hasErrorWhanCheckInput(input, GAME_NUMBER)) return this.#inputGameNumbers();
+    this.#view.printHint(this.#model.compareUserWithComputerNumbers(input));
+    if (this.#model.isThreeStrikes()) return this.#threeStrikes();
+    this.#inputGameNumbers();
   }
 
-  #printHint(numbers) {
-    this.#view.printHint(this.#model.compareUserWithComputerNumbers(numbers));
-    return this.#threeStrikesOrNot();
-  }
-
-  #threeStrikesOrNot() {
-    if (this.#model.isThreeStrikes()) {
-      this.#view.printSuccess();
-      return this.#inputGameCommand();
-    }
-    this.#model.resetStatus();
-    return this.#inputGameNumbers();
+  #threeStrikes() {
+    this.#view.printSuccess();
+    this.#inputGameCommand();
   }
 
   #inputGameCommand() {
-    this.#view.readGameCommand((number) => this.#checkGameCommand(number));
+    this.#view.readGameCommand(this.#gameCommandHandler.bind(this));
   }
 
-  #checkGameCommand(number) {
-    try {
-      this.#validator.checkGameCommand(number);
-    } catch (error) {
-      return this.#handleError(error);
-    }
-    return this.#restartOrFinish(number);
+  #gameCommandHandler(input) {
+    if (this.#hasErrorWhanCheckInput(input, GAME_COMMAND)) return this.#inputGameCommand();
+    this.#restartOrFinish(input);
   }
 
   #restartOrFinish(number) {
@@ -72,9 +59,18 @@ class BaseballController {
     return this.#view.finishGame();
   }
 
+  #hasErrorWhanCheckInput(numbers, inputName) {
+    try {
+      this.#validator[inputName](numbers);
+    } catch (error) {
+      return this.#handleError(error);
+    }
+  }
+
   #handleError(error) {
     if (error instanceof ValidationError) {
-      return this.#view.printError(new ReadError('Validation Error', error));
+      this.#view.printError(new ReadError('Validation Error', error));
+      return true;
     }
     throw error;
   }

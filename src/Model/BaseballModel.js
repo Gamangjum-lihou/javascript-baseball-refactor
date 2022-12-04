@@ -22,12 +22,14 @@ class BaseballModel {
     return this.#score;
   }
 
-  resetStatus() {
-    this.#score = { ball: 0, strike: 0 };
+  isThreeStrikes() {
+    const boolean = this.#score.strike === 3;
+    this.resetStatus();
+    return boolean;
   }
 
-  isThreeStrikes() {
-    return this.#score.strike === 3;
+  resetStatus() {
+    this.#score = { ball: 0, strike: 0 };
   }
 }
 
